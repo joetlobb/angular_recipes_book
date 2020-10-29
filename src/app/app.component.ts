@@ -7,7 +7,7 @@ import { AuthService } from './auth/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  // title = 'project1';
+  title = 'Recipes Book';
   // loadedFeature = 'recipe';
 
   // onNavigate(feature: string) {
