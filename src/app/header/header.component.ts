@@ -1,7 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { AuthService } from '../auth/auth.service';
 import { DataStorageService } from '../shared/data-storage.service';
+import * as fromApp from '../store/app.reducer';
+import * as AuthActions from '../auth/store/auth.actions';
 
 @Component({
   selector: 'app-header',
@@ -15,15 +19,20 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   // @Output() featureSelected = new EventEmitter<string>();
 
-  constructor(private dataStorageService: DataStorageService,
-    private authService: AuthService) { }
+  constructor(
+    private dataStorageService: DataStorageService,
+    private authService: AuthService,
+    private store: Store<fromApp.AppState>) { }
 
   ngOnInit(): void {
-    this.userSub = this.authService.user.subscribe(user => {
-      this.isAuthenticate = !!user;
-      console.log('Not logged In or !user is: ' + !user);
-      console.log('Logged In or !!user is: ' + !!user);
-    });
+    // this.userSub = this.authService.user.subscribe(user => {
+    this.userSub = this.store.select('auth')
+      .pipe(map(authState => authState.user))
+      .subscribe(user => {
+        this.isAuthenticate = !!user;
+        console.log('Not logged In or !user is: ' + !user);
+        console.log('Logged In or !!user is: ' + !!user);
+      });
   }
 
   // onSelect(feature: string) {
@@ -39,7 +48,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   onLogout() {
-    this.authService.logout();
+    // this.authService.logout();
+    this.store.dispatch(new AuthActions.Logout());
   }
 
   ngOnDestroy() {
