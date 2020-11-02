@@ -14,9 +14,9 @@ export class AuthenticateSuccess implements Action {
     email: string,
     userId: string,
     token: string,
-    expirationDate: Date
-  }
-  ) { }
+    expirationDate: Date,
+    redirect: boolean
+  }) { }
 }
 
 export class Logout implements Action {
@@ -46,11 +46,11 @@ export class AutoLogin implements Action {
   readonly type = AUTO_LOGIN;
 }
 
-export type AuthActions = 
-| AuthenticateSuccess 
-| Logout 
-| LoginStart 
-| AuthenticateFail 
-| SignupStart
-| ClearError
-| AutoLogin;
+export type AuthActions =
+  | AuthenticateSuccess
+  | Logout
+  | LoginStart
+  | AuthenticateFail
+  | SignupStart
+  | ClearError
+  | AutoLogin;
