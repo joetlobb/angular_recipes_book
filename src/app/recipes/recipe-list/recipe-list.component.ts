@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { Recipe } from '../recipe.model';
 import * as fromApp from '../../store/app.reducer';
 import { map } from 'rxjs/operators';
+import * as RecipesActions from '../store/recipe.actions';
 
 @Component({
   selector: 'app-recipe-list',
@@ -37,6 +38,11 @@ export class RecipeListComponent implements OnInit, OnDestroy {
   // }
   onNewRecipe() {
     this.router.navigate(['new'], { relativeTo: this.route });
+  }
+
+  onFetchData() {
+    // this.dataStorageService.fetchRecipes().subscribe();
+    this.store.dispatch(new RecipesActions.FetchRecipes());
   }
 
   ngOnDestroy() {
