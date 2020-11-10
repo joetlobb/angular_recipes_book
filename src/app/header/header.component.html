@@ -12,6 +12,7 @@
                 <li routerLinkActive="active"><a routerLink="/recipes" *ngIf="isAuthenticate">Recipe</a></li>
                 <li routerLinkActive="active"><a routerLink="/auth" *ngIf="!isAuthenticate">Authentication</a></li>
                 <li routerLinkActive="active"><a routerLink="/shopping-list" >Shopping List</a></li>
+                <li ><a>Created by Gulyapas Poonkawinsiri</a> </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li *ngIf="isAuthenticate">
@@ -19,8 +20,8 @@
                 </li>
                 <li class="dropdown" appDropdown *ngIf="isAuthenticate">
                     <a style="cursor: pointer;" class="dropdown-toggle" role="button">Manage <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li style="text-align: center;">อย่าลบทั้งหมดนะครับ</li>
+                    <ul class="dropdown-menu" style="text-align: center;">
+                        <li style="color: white; background-color: grey;">Please do not <br> Save an Empty Recipes</li>
                         <li><a style="cursor: pointer;" (click)="onSaveData()">Save Data</a></li>
                         <li><a style="cursor: pointer;" (click)="onFetchData()">Fetch Data</a></li>
                     </ul>
