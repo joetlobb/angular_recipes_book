@@ -1,6 +1,6 @@
 # Please Visit my Angular Recipes Book 
 
-https://angular1.joetlobb.com/auth
+https://angular1.joetlobb.com
 
 
 
