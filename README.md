@@ -1,6 +1,6 @@
-# Please Visit this website to try with my Angular Recipes Book
+# Please Visit my Angular Recipes Book 
 
-https://my-angular-project1-recipe.web.app/
+angular1.joetlobb.com
 
 
 
